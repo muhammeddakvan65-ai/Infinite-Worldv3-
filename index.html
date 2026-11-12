@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <title>Infinite World</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }</script>
+</head>
+<body>
+  <div id="menu" class="overlay"><div class="card">
+    <h1>INFINITE WORLD</h1>
+    <p class="sub">One shared world. Explore it together.</p>
+    <label>Name <input id="name" maxlength="16" placeholder="Traveler" autocomplete="off"></label>
+    <label>Color <div id="colors"></div></label>
+    <label class="row"><input type="checkbox" id="hat"> Wear a hat</label>
+    <button id="play">PLAY</button>
+    <div class="status"><span id="menuDot" class="dot"></span><span id="menuStatus">Checking server…</span></div>
+  </div></div>
+
+  <div id="hud" class="hidden">
+    <div id="topbar" class="panel"><span id="connDot" class="dot"></span><b id="hudName"></b><span>Online: <b id="count">1</b></span></div>
+    <canvas id="minimap" width="160" height="160" class="panel"></canvas>
+    <button id="settingsBtn" class="iconbtn panel" aria-label="Settings">⚙</button>
+    <button id="chatToggle" class="iconbtn panel" aria-label="Toggle chat">💬</button>
+    <div id="chat" class="panel"><div id="log"></div><input id="chatInput" maxlength="200" placeholder="Enter to chat" autocomplete="off"></div>
+    <div id="toast"></div>
+    <div id="touch" class="hidden">
+      <div id="joy"><div id="knob"></div></div>
+      <button id="runBtn" class="tbtn">RUN</button>
+      <button id="jumpBtn" class="tbtn">JUMP</button>
+    </div>
+  </div>
+
+  <div id="pause" class="overlay hidden"><div class="card">
+    <h2>Paused</h2>
+    <label>Camera sensitivity <input type="range" id="sens" min="0.3" max="3" step="0.1" value="1"></label>
+    <label>Camera distance <input type="range" id="dist" min="3" max="14" step="0.5" value="7"></label>
+    <label>Graphics
+      <select id="quality"><option value="auto">Auto</option><option value="0">Low</option><option value="1">Medium</option><option value="2">High</option></select>
+    </label>
+    <p id="discoveries" class="sub"></p>
+    <button id="resume">RESUME</button>
+    <button id="leave" class="secondary">LEAVE WORLD</button>
+  </div></div>
+
+  <div id="full" class="overlay hidden"><div class="card">
+    <h2>World is full</h2><p id="fullMsg" class="sub"></p>
+    <button onclick="location.reload()">TRY AGAIN</button>
+  </div></div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>
